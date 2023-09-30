@@ -15,7 +15,14 @@
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -28,21 +35,25 @@
   <title>Wisechamps | Referral</title>
 </head>
 <style>
-  html,
-  body {
+  html,body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  body {
     min-height: 100vh;
     min-width: 100%;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
     flex-direction: column !important;
+    margin-bottom: 20px;
   }
   #crmWebToEntityForm {
     min-width: 100%;
-    display: flex !important;
+    display: none;
     justify-content: center !important;
     align-items: center !important;
   }
@@ -52,14 +63,16 @@
   }
 
   #crmWebToEntityForm form{
-    padding: 4rem;
+    margin-top: 10px;
+    padding: 2rem 4rem;
     width: 50%;
-    border: 1px solid;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
     gap: 1.5rem;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   }
   .zcwf_row {
     width: 100%;
@@ -72,22 +85,40 @@
     outline: none;
     border: 1px solid #aaaaaa;
   }
-  input[type="submit"], input[type="reset"] {
-    width: unset;
-    padding: 1rem;
-    margin: 0 10px 0 0;
+
+  .btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
   }
+
+  .btns input {
+    background-color: #319332;
+    color: white;
+    border: none;
+  }
+  
   .zcwf_title {
     width: 100%;
     text-align: center;
   }
+
+
+  @media all and (max-width:768px) {
+    #crmWebToEntityForm form{
+      padding: 1rem;
+      width: 80%;
+    }
+  }
+
 </style>
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root">
   </div>
-  <div id='crmWebToEntityForm' class='zcwf_lblLeft crmWebToEntityForm'
+  <div id='crmWebToEntityForm' class='zcwf_lblLeft crmWebToEntityForm animate__animated animate__fadeInLeft'
     style='background-color: white;color: black;'>
     <form action='https://crm.zoho.com/crm/WebToContactForm' name=WebToContacts4878003000007482080 method='POST'
       onSubmit='javascript:document.charset="UTF-8"; return checkMandatory4878003000007482080()' accept-charset='UTF-8'>
@@ -149,10 +180,9 @@
       </div>
       <div class='zcwf_row'>
         <div class='zcwf_col_lab'></div>
-        <div class='zcwf_col_fld'><input type='submit' id='formsubmit' class='formsubmit zcwf_button' value='Submit'
+        <div class='zcwf_col_fld btns'><input type='submit' id='formsubmit' class='formsubmit zcwf_button' value='Submit'
             title='Submit'><input type='reset' class='zcwf_button' name='reset' value='Reset' title='Reset'></div>
       </div>
-
     </form>
   </div>
 
@@ -197,6 +227,8 @@
             alert(fldLangVal[i] + ' cannot be none.');
             fieldObj.focus();
             return false;
+          } else {
+            localStorage.setItem("grade", fieldObj.options[fieldObj.selectedIndex].value)
           }
         } else if (fieldObj.type == 'checkbox') {
           if (fieldObj.checked == false) {
@@ -232,5 +264,4 @@
 </script>
 <script defer id='wf_anal'
   src='https://crm.zohopublic.com/crm/WebFormAnalyticsServeServlet?rid=ff3c995d5d099ea7f8700d0c9384580d2739af61aebb43f16550ec3daf91154dgid6ab560f8ed2982d9401462b4e2262f28439309471e67ae80ed0f6b254633767dgid5cf99212d7958dbcd176c761c6ce0a4d7e43e277bdc5d8b9c12010015418942cgid14f4ec16431e0686150daa43f3210513&tw=61690b96c1d0471b638f31426f38e68aa67fb7ed6da86f32dc10ad817fe55a0a'></script>
-
 </html>
