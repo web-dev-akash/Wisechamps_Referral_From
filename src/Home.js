@@ -21,6 +21,8 @@ export const Home = () => {
       }
       setUser(res.name);
       formDiv.style.display = "flex";
+      document.getElementById("CONTACTCF18").value = res.contactid;
+      console.log(res.contactid);
       setLoading(false);
       return;
     } catch (error) {
@@ -48,6 +50,7 @@ export const Home = () => {
   }
 
   if (!phone || !query || error) {
+    formDiv.style.display = "none";
     return (
       <div>
         <p>This Referral Link is not valid, please try again</p>
