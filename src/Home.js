@@ -22,7 +22,6 @@ export const Home = () => {
       setUser(res.name);
       formDiv.style.display = "flex";
       document.getElementById("CONTACTCF18").value = res.contactid;
-      console.log(res.contactid);
       setLoading(false);
       return;
     } catch (error) {
@@ -34,9 +33,9 @@ export const Home = () => {
   };
 
   useEffect(() => {
-    // if (phone) {
-    //   getReferralUser(phone);
-    // }
+    if (phone) {
+      getReferralUser(phone);
+    }
   }, []);
 
   if (loading) {
@@ -66,7 +65,7 @@ export const Home = () => {
         Welcome to Wisechampions Club
       </h3>
       <p className="animate__animated animate__fadeInLeft">
-        <b>{"Akash".toUpperCase()}</b>
+        <b>{user.toUpperCase()}</b>
         {"  "}
         is enjoying our Live quizzes every week, they believe in the power of
         interactive learning and thought you would enjoy it too
