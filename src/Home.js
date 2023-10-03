@@ -22,6 +22,7 @@ export const Home = () => {
       setUser(res.name);
       formDiv.style.display = "flex";
       document.getElementById("CONTACTCF18").value = res.contactid;
+      // console.log(document.getElementById("CONTACTCF18").value);
       setLoading(false);
       return;
     } catch (error) {
