@@ -9,11 +9,13 @@
 .App h3 + p {
   font-size: 15px;
 }
+
 @media all and (max-width: 768px) {
   .App {
     padding: 1rem;
   }
 }
+
 svg {
   width: 3.25em;
   transform-origin: center;

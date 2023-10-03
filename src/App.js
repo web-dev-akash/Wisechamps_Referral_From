@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import "animate.css";
 import "./App.css";
-import logo from "./logo.png";
 import { AllRoutes } from "./Routes";
 function App() {
   return (
