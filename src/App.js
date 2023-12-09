@@ -1,10 +1,10 @@
 import "animate.css";
 import "./App.css";
-import { AllRoutes } from "./Routes";
+import { Home } from "./Home";
 function App() {
   return (
     <div className="App">
-      <AllRoutes />
+      <Home />
     </div>
   );
 }
