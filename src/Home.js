@@ -21,7 +21,7 @@ export const Home = () => {
     "gm"
   );
 
-  let whatsappHerf = `https://wa.me?text=Hi!%20%0AI%20am%20enjoying%20Wisechamps%20LIVE%20QUIZZES%20%26%20solving%20COMPLEX%20QUESTIONS%20every%20week%20%F0%9F%8E%AF%0Aanddd%20I%20am%20improving%20my%20IQ%20LEVEL%20regularly%0A%0ACome%20join%20me%20in%20this%20FUN%20%26%20INTERESTING%20way%20of%20LEARNING%20%0AClick%20here%20%F0%9F%91%87%0Ahttps%3A%2F%2Freferral.wisechamps.com%3FrefereeId%3D${phone}%0A%0ASee%20you%20there%20%F0%9F%92%A1`;
+  let whatsappHerf = `https://wa.me?text=Hi!%20%0AI%20am%20enjoying%20Wisechamps%20LIVE%20QUIZZES%20%26%20solving%20COMPLEX%20QUESTIONS%20every%20week%20%F0%9F%8E%AF%20anddd%20I%20am%20improving%20my%20IQ%20LEVEL%20regularly%0A%0ACome%20join%20me%20in%20this%20FUN%20%26%20INTERESTING%20way%20of%20LEARNING%20%0AClick%20here%20%F0%9F%91%87%0Ahttps%3A%2F%2Freferral.wisechamps.com%2F%3FrefereeId%3D${phone}%0A%0ASee%20you%20there%20%F0%9F%92%A1`;
 
   const handleChange = (e) => {
     e.preventDefault();
