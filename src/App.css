@@ -371,3 +371,8 @@ select {
 .wrongAnswer {
   background-color: #f44336;
 }
+.pointers p {
+  border: 1px solid #319332;
+  padding: 8px 0;
+  border-radius: 20px;
+}

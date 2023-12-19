@@ -21,7 +21,7 @@ export const Home = () => {
     "gm"
   );
 
-  let whatsappHerf = `https://wa.me?text=Hi!%20%0AYou%20know%20what%20I%20am%20boosting%20VITAMIN%20IQ%20level%20by%20attending%20%0AWISECHAMPS%20QUIZZES%20%F0%9F%8E%AF%0A%0ACome%20and%20join%20WISECHAMPS%20and%20compete%20with%20me%20and%20WIN%20%F0%9F%8E%81%0ARs.300%2F-%20Amazon%20Voucher%20%F0%9F%AB%A3%0A%0ALink%20-%20https%3A%2F%2Freferral.wisechamps.com%2F%3FrefereeId%3D${phone}`;
+  let whatsappHerf = `https://wa.me?text=Hi!%20%0AI%20am%20enjoying%20Wisechamps%20LIVE%20QUIZZES%20%26%20solving%20COMPLEX%20QUESTIONS%20every%20week%20%F0%9F%8E%AF%0Aanddd%20I%20am%20improving%20my%20IQ%20LEVEL%20regularly%0A%0ACome%20join%20me%20in%20this%20FUN%20%26%20INTERESTING%20way%20of%20LEARNING%20%0AClick%20here%20%F0%9F%91%87%0Ahttps%3A%2F%2Freferral.wisechamps.com%3FrefereeId%3D${phone}%0A%0ASee%20you%20there%20%F0%9F%92%A1`;
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -188,17 +188,26 @@ export const Home = () => {
         >
           <img src={logo} alt="Wisechamps" width={"120px"} />
         </header>
-        <h3 className="animate__animated animate__fadeInRight">
-          Welcome to Wisechampions Club
+        <h3
+          className="animate__animated animate__fadeInRight"
+          style={{
+            marginTop: "30px",
+          }}
+        >
+          Welcome to WiseChamps Quizzing CLUB
         </h3>
-        <p className="animate__animated animate__fadeInLeft">
+        <p className="animate__animated animate__fadeInLeft pointers">
           <b>{user.name.toUpperCase()}</b>
           {"  "}
-          is enjoying our Live quizzes every week, they believe in the power of
-          interactive learning and thought you would enjoy it too
+          is taking our live quizzes every week to 👇
+          <p>Practice Complex questions</p>
+          <p>Remove Competition Fear</p>
+          <p>Learning speed-solving tricks</p>
+          <p>Fun!!! 🤩</p>
         </p>
         <p className="animate__animated animate__fadeInRight">
-          Fill out the form to join our WhatsApp Group
+          Please fill out this form to JOIN OUR QUIZZING WHATSAPP GROUP and
+          <b> AVAIL 10 FREE QUIZZES 🥳</b>
         </p>
       </div>
     );
