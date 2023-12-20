@@ -12,6 +12,12 @@ html {
   background-color: white !important;
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -375,4 +381,44 @@ select {
   border: 1px solid #319332;
   padding: 8px 0;
   border-radius: 20px;
+}
+
+/* #crmWebToEntityForm {
+  min-width: 100%;
+  justify-content: center !important;
+  align-items: center !important;
+} */
+#crmWebToEntityForm form {
+  margin: auto;
+  text-align: left;
+  margin-top: 20px;
+  padding: 2rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 1.2rem;
+  border: 1px solid #a5a5a5;
+  margin-bottom: 20px;
+}
+
+#crmWebToEntityForm form > div {
+  width: 100%;
+}
+
+#crmWebToEntityForm input,
+#crmWebToEntityForm select {
+  margin-top: 5px;
+  width: 100%;
+  padding: 0.7rem 0 0.7rem 1rem;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid #aaaaaa;
+}
+@media screen and (max-width: 768px) {
+  #crmWebToEntityForm form {
+    width: 95%;
+    padding: 1.5rem 1rem;
+  }
 }

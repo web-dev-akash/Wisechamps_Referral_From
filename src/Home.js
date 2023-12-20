@@ -15,6 +15,14 @@ export const Home = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [mode, setMode] = useState("");
+  const [registerForm, setRegisterForm] = useState({
+    email: "",
+    phone: "",
+    parent_name: "",
+    student_name: "",
+    student_grade: "",
+    source_campaign: "Referral Community",
+  });
 
   const emailRegex = new RegExp(
     /^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/,
@@ -26,6 +34,17 @@ export const Home = () => {
   const handleChange = (e) => {
     e.preventDefault();
     setEmail(e.target.value);
+  };
+
+  const handleFormChange = (e) => {
+    e.preventDefault();
+    const value = e.target.value;
+    const name = e.target.name;
+    setRegisterForm({
+      ...registerForm,
+      [name]: value,
+      source_campaign: "Referral Community",
+    });
   };
 
   const handleClick = async (email) => {
@@ -60,8 +79,6 @@ export const Home = () => {
       if (mode === "user") {
         setUser(resUser.data.user);
       }
-      formDiv.style.display = "flex";
-      document.getElementById("CONTACTCF18").value = resUser.data.user.id;
       setLoading(false);
       setMode("referee");
       return;
@@ -70,6 +87,62 @@ export const Home = () => {
       setLoading(false);
       setError(true);
       return;
+    }
+  };
+
+  const handleRegisterFormClick = async (e, data, refereeId) => {
+    try {
+      e.preventDefault();
+      if (
+        !data.email ||
+        !data.phone ||
+        !data.parent_name ||
+        !data.student_name ||
+        !data.student_grade
+      ) {
+        alert("Please Fill all the required details.");
+        return;
+      }
+      if (!emailRegex.test(data.email)) {
+        alert("Please Enter a Valid Email");
+        return;
+      }
+      if (data.phone.length < 10) {
+        alert("Please Enter a Valid Phone Number");
+        return;
+      }
+      if (data.parent_name.length < 3) {
+        alert("Please Enter a Valid Parent Name");
+        return;
+      }
+      if (data.student_name.length < 3) {
+        alert("Please Enter a Valid Student Name");
+        return;
+      }
+      if (data.student_grade.value === "none") {
+        alert("Please select a Valid Student Grade");
+        return;
+      }
+      setLoading(true);
+      const url = `https://backend.wisechamps.com/user/add`;
+      const res = await axios.post(url, {
+        email: data.email,
+        phone: data.phone,
+        parent_name: data.parent_name,
+        student_name: data.student_name,
+        student_grade: data.student_grade,
+        referralId: refereeId ? refereeId : "",
+        source_campaign: data.source_campaign
+          ? data.source_campaign
+          : "Referral Community",
+      });
+      const mode = res.data.mode;
+      setMode(mode);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      setError(true);
+      console.log("error is ------------", error);
     }
   };
 
@@ -150,6 +223,26 @@ export const Home = () => {
     );
   }
 
+  if (mode === "useradded") {
+    return (
+      <div className="quizSubmitted">
+        <h1>Thank You</h1>
+        <p>
+          We have shared the group joining link on your registered whatsapp
+          number
+        </p>
+      </div>
+    );
+  }
+
+  if (mode === "duplicateuser") {
+    return (
+      <div className="quizSubmitted">
+        <p>OOPS! It looks like you are already registered with us.</p>
+      </div>
+    );
+  }
+
   if (mode === "user") {
     return (
       <div className="quizSubmitted">
@@ -191,7 +284,7 @@ export const Home = () => {
         <h3
           className="animate__animated animate__fadeInRight"
           style={{
-            marginTop: "30px",
+            marginTop: "70px",
           }}
         >
           Welcome to WiseChamps Quizzing CLUB
@@ -209,6 +302,91 @@ export const Home = () => {
           Please fill out this form to JOIN OUR QUIZZING WHATSAPP GROUP and
           <b> AVAIL 10 FREE QUIZZES 🥳</b>
         </p>
+        <div id="crmWebToEntityForm">
+          <form>
+            <div>
+              <label htmlFor="parent_name">Parent Name</label>
+              <input
+                type="text"
+                inputMode="text"
+                onChange={handleFormChange}
+                name="parent_name"
+                id="parent_name"
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="student_name">Student Name</label>
+              <input
+                type="text"
+                inputMode="text"
+                onChange={handleFormChange}
+                name="student_name"
+                id="student_name"
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                inputMode="email"
+                onChange={handleFormChange}
+                name="email"
+                id="email"
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="phone">Phone</label>
+              <input
+                type="number"
+                inputMode="tel"
+                onChange={handleFormChange}
+                name="phone"
+                id="phone"
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="student_grade">Student Grade</label>
+              <select
+                onChange={handleFormChange}
+                name="student_grade"
+                id="student_grade"
+                required
+              >
+                <option value={"none"}>-None-</option>
+                <option value={"1"}>Grade 1</option>
+                <option value={"2"}>Grade 2</option>
+                <option value={"3"}>Grade 3</option>
+                <option value={"4"}>Grade 4</option>
+                <option value={"5"}>Grade 5</option>
+                <option value={"6"}>Grade 6</option>
+                <option value={"7"}>Grade 7</option>
+                <option value={"8"}>Grade 8</option>
+              </select>
+            </div>
+            <button
+              style={{
+                border: "none",
+                padding: "0rem 5.5rem",
+                marginTop: "10px",
+                cursor: "pointer",
+              }}
+              onClick={(e) => handleRegisterFormClick(e, registerForm, user.id)}
+            >
+              <p
+                style={{
+                  fontWeight: "600",
+                  fontSize: "15px",
+                }}
+              >
+                Submit
+              </p>
+            </button>
+          </form>
+        </div>
       </div>
     );
   }
