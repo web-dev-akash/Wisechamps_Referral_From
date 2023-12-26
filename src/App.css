@@ -143,8 +143,7 @@ h1 {
 
 @media screen and (max-width: 768px) {
   html,
-  body,
-  div {
+  body {
     margin: 0 !important;
     padding: 0;
   }
@@ -302,6 +301,10 @@ h1 {
   text-align: left;
 }
 
+.quizSubmitted > p {
+  font-size: 25px;
+}
+
 .quizSubmitted > div > a,
 form button {
   margin: 0 auto;
@@ -312,7 +315,7 @@ form button {
   background-color: #55cd6c;
   text-decoration: none;
   color: white;
-  width: auto;
+  width: 260px;
   padding: 0 15px;
   border-radius: 50px;
   margin-top: 20px;
@@ -382,12 +385,6 @@ select {
   padding: 8px 0;
   border-radius: 20px;
 }
-
-/* #crmWebToEntityForm {
-  min-width: 100%;
-  justify-content: center !important;
-  align-items: center !important;
-} */
 #crmWebToEntityForm form {
   margin: auto;
   text-align: left;
@@ -416,9 +413,36 @@ select {
   outline: none;
   border: 1px solid #aaaaaa;
 }
+.tagLine {
+  font-size: 15px !important;
+  max-width: 80%;
+}
+
+.voucherName {
+  font-size: 20px;
+  margin-top: 15px;
+}
+@media screen and (max-width: 560px) {
+  .quizSubmitted {
+    position: absolute;
+    top: 10px;
+    left: 0;
+  }
+  .voucherName {
+    font-size: 15px;
+  }
+}
 @media screen and (max-width: 768px) {
   #crmWebToEntityForm form {
     width: 95%;
     padding: 1.5rem 1rem;
+  }
+
+  .quizSubmitted > p {
+    font-size: 18px;
+  }
+  .tagLine {
+    font-size: 12px !important;
+    max-width: 92% !important;
   }
 }

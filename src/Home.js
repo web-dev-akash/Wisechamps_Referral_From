@@ -4,17 +4,17 @@ import { RaceBy } from "@uiball/loaders";
 import logo from "./logo.png";
 import whatsapp from "./assets/whatsapp.svg";
 import axios from "axios";
+import giftVoucher from "./assets/Amazon_Gift_Card.png";
 export const Home = () => {
-  const formDiv = document.getElementById("crmWebToEntityForm");
   const query = new URLSearchParams(window.location.search);
   const [email, setEmail] = useState(query.get("email"));
   const [phone, setPhone] = useState(
     query.get("refereeId") ? query.get("refereeId") : ""
   );
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({ name: "Akash Kumar" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [mode, setMode] = useState("");
+  const [mode, setMode] = useState("user");
   const [registerForm, setRegisterForm] = useState({
     email: "",
     phone: "",
@@ -29,7 +29,7 @@ export const Home = () => {
     "gm"
   );
 
-  let whatsappHerf = `https://wa.me?text=Hi!%20%0AI%20am%20enjoying%20Wisechamps%20LIVE%20QUIZZES%20%26%20solving%20COMPLEX%20QUESTIONS%20every%20week%20%F0%9F%8E%AF%20anddd%20I%20am%20improving%20my%20IQ%20LEVEL%20regularly%0A%0ACome%20join%20me%20in%20this%20FUN%20%26%20INTERESTING%20way%20of%20LEARNING%20%0AClick%20here%20%F0%9F%91%87%0Ahttps%3A%2F%2Freferral.wisechamps.com%2F%3FrefereeId%3D${phone}%0A%0ASee%20you%20there%20%F0%9F%92%A1`;
+  let whatsappHerf = `https://wa.me?text=Hi!%20%0AI%20am%20enjoying%20Wisechamps%20LIVE%20QUIZZES%20%26%20solving%20COMPLEX%20QUESTIONS%20every%20week%20%F0%9F%8E%AF%20anddd%20I%20am%20improving%20my%20IQ%20LEVEL%20regularly%0A%0ACome%20join%20me%20in%20this%20FUN%20%26%20INTERESTING%20way%20of%20LEARNING%20%0AClick%20here%20to%20register%20%F0%9F%91%87%0Ahttps%3A%2F%2Freferral.wisechamps.com%3FrefereeId%3D${phone}%0A%0ASee%20you%20there%20%F0%9F%92%A1`;
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -185,7 +185,6 @@ export const Home = () => {
   }
 
   if (error) {
-    formDiv.style.display = "none";
     return (
       <div>
         <p>This Referral Link is not valid, please try again</p>
@@ -247,11 +246,51 @@ export const Home = () => {
     return (
       <div className="quizSubmitted">
         <p>
-          Challenge your friend and get a{" "}
-          <p>
-            <b>₹300 Amazon Gift Voucher</b>
+          <p
+            style={{
+              marginBottom: "20px",
+            }}
+          >
+            <b>Invite Your Friends And Get</b>
           </p>
-          once they register with us.
+          <div
+            style={{
+              margin: "auto",
+              maxWidth: "95%",
+              position: "relative",
+            }}
+          >
+            <div
+              className="voucherName"
+              style={{
+                top: "0",
+                position: "absolute",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100%",
+                textTransform: "uppercase",
+                fontWeight: "bold",
+              }}
+            >
+              {user.name}
+            </div>
+            <img src={giftVoucher} width={"100%"} alt="Amazon Gift Voucher" />
+            <p>
+              <b>₹300 Amazon Gift Voucher</b>
+            </p>
+          </div>
+        </p>
+        <p
+          className="tagLine"
+          style={{
+            margin: "0 auto 30px auto",
+            padding: "10px",
+            borderRadius: "50px",
+            border: "1px solid",
+          }}
+        >
+          Once they register with us and join the quiz.
         </p>
         <div>
           <a href={whatsappHerf}>
@@ -261,7 +300,7 @@ export const Home = () => {
               width={"40px"}
               height={"40px"}
             />
-            <p>Challenge a friend</p>
+            <p>Click here to Invite</p>
           </a>
         </div>
       </div>
