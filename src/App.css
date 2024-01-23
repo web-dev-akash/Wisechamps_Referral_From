@@ -446,3 +446,33 @@ select {
     max-width: 92% !important;
   }
 }
+
+.slider-main .container-slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 25px;
+}
+
+.slider-main ul {
+  display: flex;
+  list-style: none;
+  transition: all 1s ease;
+}
+
+.slider-main .slider {
+  width: 200px;
+  height: 380px;
+  overflow: hidden;
+  border-radius: 25px;
+}
+
+.slider-main .container-slider img {
+  width: 200px;
+  height: 380px;
+  border-radius: 25px;
+  object-fit: contain;
+  border: 1px solid;
+}

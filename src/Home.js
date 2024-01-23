@@ -4,17 +4,17 @@ import { RaceBy } from "@uiball/loaders";
 import logo from "./logo.png";
 import whatsapp from "./assets/whatsapp.svg";
 import axios from "axios";
-import giftVoucher from "./assets/Amazon_Gift_Card.png";
+import giftVoucher from "./assets/voucher.PNG";
 export const Home = () => {
   const query = new URLSearchParams(window.location.search);
   const [email, setEmail] = useState(query.get("email"));
   const [phone, setPhone] = useState(
     query.get("refereeId") ? query.get("refereeId") : ""
   );
-  const [user, setUser] = useState({ name: "Akash Kumar" });
+  const [user, setUser] = useState({ name: "Akash" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [mode, setMode] = useState("user");
+  const [mode, setMode] = useState("");
   const [registerForm, setRegisterForm] = useState({
     email: "",
     phone: "",
@@ -29,7 +29,7 @@ export const Home = () => {
     "gm"
   );
 
-  let whatsappHerf = `https://wa.me?text=Hi!%20%0AI%20am%20enjoying%20Wisechamps%20LIVE%20QUIZZES%20%26%20solving%20COMPLEX%20QUESTIONS%20every%20week%20%F0%9F%8E%AF%20anddd%20I%20am%20improving%20my%20IQ%20LEVEL%20regularly%0A%0ACome%20join%20me%20in%20this%20FUN%20%26%20INTERESTING%20way%20of%20LEARNING%20%0AClick%20here%20to%20register%20%F0%9F%91%87%0Ahttps%3A%2F%2Freferral.wisechamps.com%3FrefereeId%3D${phone}%0A%0ASee%20you%20there%20%F0%9F%92%A1`;
+  let whatsappHerf = `https://wa.me?text=Hi!%20I%20am%20learning%20a%20lot%20through%20Wisechamps%20Final%20Exam%20Practice%20Sessions.%20These%20quizzes%20are%20FUN%20%26%20INTERESTING%20way%20of%20LEARNING%20regularly.%20%0A%0AI%20am%20sure%20this%20time%20I%20will%20Ace%20my%20final%20Math%20and%20Science%20Exams.%0A%0AWinners%20also%20get%20gifts!%20So%20Don%27t%20Miss%20out...%0A%0AClick%20here%20to%20register%20your%20name%20and%20participate%20in%20free%20sessions%20%F0%9F%91%87%0Ahttps%3A%2F%2Freferral.wisechamps.com%3FrefereeId%3D${phone}%20%0A%0ASee%20you%20there%20%F0%9F%92%A1`;
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -237,7 +237,14 @@ export const Home = () => {
   if (mode === "duplicateuser") {
     return (
       <div className="quizSubmitted">
-        <p>OOPS! It looks like you are already registered with us.</p>
+        <h1>OPPS!</h1>
+        <p
+          style={{
+            margin: "-10px",
+          }}
+        >
+          It looks like you are already registered with us.
+        </p>
       </div>
     );
   }
@@ -326,20 +333,21 @@ export const Home = () => {
             marginTop: "70px",
           }}
         >
-          Welcome to WiseChamps Quizzing CLUB
+          Welcome to WiseChamps Final Exam Practice Sessions
         </h3>
         <p className="animate__animated animate__fadeInLeft pointers">
-          <b>{user.name.toUpperCase()}</b>
+          <b>{user?.name.toUpperCase()}</b>
           {"  "}
-          is taking our live quizzes every week to 👇
+          is taking our live quizzes every week 👇
           <p>Practice Complex questions</p>
           <p>Remove Competition Fear</p>
           <p>Learning speed-solving tricks</p>
           <p>Fun!!! 🤩</p>
         </p>
         <p className="animate__animated animate__fadeInRight">
-          Please fill out this form to JOIN OUR QUIZZING WHATSAPP GROUP and
-          <b> AVAIL 10 FREE QUIZZES 🥳</b>
+          Fill out this form to REGISTER & JOIN OUR FINAL EXAM PRACTICE SESSION
+          ON WHATSAPP GROUP and
+          <b> AVAIL 5 FREE SESSIONS 🥳</b>
         </p>
         <div id="crmWebToEntityForm">
           <form>
@@ -443,7 +451,7 @@ export const Home = () => {
         <img src={logo} alt="Wisechamps" width={"120px"} />
       </header>
 
-      <div className="main">
+      <div className="main animate__animated animate__fadeInRight">
         <h3>Email</h3>
         <div className="form">
           <input
