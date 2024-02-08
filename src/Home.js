@@ -21,6 +21,7 @@ export const Home = () => {
     parent_name: "",
     student_name: "",
     student_grade: "",
+    relation: "",
     source_campaign: "Referral Community",
   });
 
@@ -90,15 +91,18 @@ export const Home = () => {
     }
   };
 
+  console.log(registerForm);
   const handleRegisterFormClick = async (e, data, refereeId) => {
     try {
       e.preventDefault();
+
       if (
         !data.email ||
         !data.phone ||
         !data.parent_name ||
         !data.student_name ||
-        !data.student_grade
+        !data.student_grade ||
+        !data.relation
       ) {
         alert("Please Fill all the required details.");
         return;
@@ -119,8 +123,12 @@ export const Home = () => {
         alert("Please Enter a Valid Student Name");
         return;
       }
-      if (data.student_grade.value === "none") {
+      if (data.student_grade === "none") {
         alert("Please select a Valid Student Grade");
+        return;
+      }
+      if (data.relation === "none") {
+        alert("Please choose a valid Referee");
         return;
       }
       setLoading(true);
@@ -132,6 +140,7 @@ export const Home = () => {
         student_name: data.student_name,
         student_grade: data.student_grade,
         referralId: refereeId ? refereeId : "",
+        relation: data.relation,
         source_campaign: data.source_campaign
           ? data.source_campaign
           : "Referral Community",
@@ -280,7 +289,7 @@ export const Home = () => {
                 fontWeight: "bold",
               }}
             >
-              {user.name}
+              {user.studentName}
             </div>
             <img src={giftVoucher} width={"100%"} alt="Amazon Gift Voucher" />
             <p>
@@ -336,7 +345,7 @@ export const Home = () => {
           Welcome to WiseChamps Final Exam Practice Sessions
         </h3>
         <p className="animate__animated animate__fadeInLeft pointers">
-          <b>{user?.name.toUpperCase()}</b>
+          <b>{user?.studentName.toUpperCase()}</b>
           {"  "}
           is taking our live quizzes every week 👇
           <p>Practice Complex questions</p>
@@ -412,6 +421,19 @@ export const Home = () => {
                 <option value={"6"}>Grade 6</option>
                 <option value={"7"}>Grade 7</option>
                 <option value={"8"}>Grade 8</option>
+              </select>
+            </div>
+            <div>
+              <label htmlFor="relation">Who Referred You</label>
+              <select
+                onChange={handleFormChange}
+                name="relation"
+                id="relation"
+                required
+              >
+                <option value={"none"}>-None-</option>
+                <option value={"Friend"}>Friend</option>
+                <option value={"Cousin"}>Cousin</option>
               </select>
             </div>
             <button
